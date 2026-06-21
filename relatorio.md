@@ -77,7 +77,6 @@ Ordem de prioridade:
 - D18: alterar o método de venda para lançar uma explicação no CLI para indicar a falta de estoque, em vez de retornar 0 silenciosamente. É baixo esforço e tem um grande impacto na robustez do sistema.
 - D2: remover senha hardcoded, utilizando uma configuração externa ou um sistema de autenticação mais seguro. É baixo esforço e evita um grande risco de segurança.
 - D23: adicionar validação de entrada no método de cadastro, garantindo que os dados inseridos sejam válidos e evitando falhas ou comportamentos inesperados. É baixo esforço e tem um grande impacto na robustez do sistema.
-- D1: manter os comentários de versionamento e autoria, mas padronizá-los e torná-los mais explicativos, indicando claramente a função do código e as mudanças realizadas. É um esforço baixo, mas melhora a documentação do sistema.
 - D3: renomear a variável para um nome mais descritivo, eliminando a necessidade do comentário explicativo. É um esforço baixo, mas melhora a legibilidade do código.
 - D5: remover o comentário explicativo, já que o método é autoexplicativo, e garantir que o nome do método seja claro o suficiente para transmitir sua função. É um esforço baixo, mas melhora a documentação do sistema.
 - D6: renomear o método para um nome mais descritivo, eliminando a necessidade do comentário explicativo, e renomear os parâmetros para nomes mais descritivos. É um esforço baixo, mas melhora a legibilidade do código.
@@ -101,6 +100,7 @@ Ordem de prioridade:
 
 #### **Conviver conscientemente**: 
 
+- D1: manter os comentários de versionamento e autoria, mas padronizá-los e torná-los mais explicativos, indicando claramente a função do código e as mudanças realizadas. É um esforço baixo, mas melhora a documentação do sistema.
 - D12: remover o código morto, garantindo que o código seja limpo e fácil de entender. É um esforço baixo, mas melhora a manutenção do sistema.
 - D22: remover a variável global hist, já que ela não é utilizada e apenas consome memória, garantindo que o código seja limpo e fácil de entender. É um esforço baixo, mas melhora a manutenção do sistema.
 - D13: implementar o método requisitado, garantindo que a funcionalidade seja completa e o sistema funcione conforme esperado. É um esforço alto, mas melhora a funcionalidade do sistema.
