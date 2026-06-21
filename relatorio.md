@@ -107,19 +107,21 @@ Ordem de prioridade:
 
 # 6. Itens Quitados (Antes vs Depois)
 
-### Item (ID: X)
+### Item D3
 
 **Antes**: 
 
 ```java
+    static ArrayList<String> hist = new ArrayList<>();  // historico
 ```
 
 **Depois**:
 
 ```java
+    static ArrayList<String> historicoProdutosCadastrados = new ArrayList<>();
 ```
 
-**Explicação**:
+**Explicação**: Renomeando a variável para um nome mais descritivo, eliminando a necessidade do comentário explicativo e melhorando a legibilidade do código.
 
 ### Item (ID: X)
 
