@@ -18,14 +18,13 @@ public class Estoque {
         int qtd;
     }
 
-    // funcao que adiciona produto
-    static void add(String n, double p, int q) {
+    static void cadastrarProduto(String nomeProduto, double precoProdto, int qquantidadeProduto) {
         Produto prod = new Produto();
-        prod.nome = n;
-        prod.preco = p;
-        prod.qtd = q;
+        prod.nome = nomeProduto;
+        prod.preco = precoProdto;
+        prod.qtd = qquantidadeProduto;
         produtos.add(prod);
-        historicoProdutosCadastrados.add(n);
+        historicoProdutosCadastrados.add(nomeProduto);
         System.out.println("Produto adicionado!");
     }
 
