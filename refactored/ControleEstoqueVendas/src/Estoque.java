@@ -4,10 +4,27 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 
 public class Estoque {
 
-    static String SENHA_ADMIN = "1234";  // senha do admin
+    static final String ARQUIVO_CONFIGURACAO = "config.properties";
+    static final String CHAVE_SENHA_ADMIN = "senha.admin";
+
+    static String carregarSenhaAdmin() {
+        Properties propriedades = new Properties();
+
+        try (FileInputStream arquivo = new FileInputStream(ARQUIVO_CONFIGURACAO)) {
+            propriedades.load(arquivo);
+            return propriedades.getProperty(CHAVE_SENHA_ADMIN);
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar arquivo de configuracao");
+            return null;
+        }
+    }
 
     static ArrayList<Produto> produtos = new ArrayList<>();
     static ArrayList<String> historicoProdutosCadastrados = new ArrayList<>();
@@ -134,7 +151,7 @@ public class Estoque {
             } else if (op.equals("5")) {
                 System.out.print("Senha: ");
                 String s = sc.next();
-                if (s.equals(SENHA_ADMIN)) {
+                if (s.equals(carregarSenhaAdmin())) {
                     System.out.println("Acesso liberado");
                 } else {
                     System.out.println("Senha errada");

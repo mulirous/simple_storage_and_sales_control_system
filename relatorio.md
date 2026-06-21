@@ -351,4 +351,50 @@ static double calcular_total(double preco, int quantidade, boolean isRelatorio) 
 
 **Explicação**: Refatorando o método vender() para utilizar o método calcula_total() refatorado, para aceitar o calculo de total e aplicação de desconto tanto para quando a venda é realizada quanto para o relatório, garantindo uma regra de desconto consistente entre os métodos, e a retirada de comentários desnecessários para explicação de uso, melhorando a consistência, confiabilidade e legibilidade do sistema. Devido a "grande" refatoração abordar diversas dívidas, elas foram quitadas ao mesmo tempo.
 
+### Item D2:
+
+**Antes**:
+
+```java
+    static String SENHA_ADMIN = "1234";  // senha do admin
+```
+
+**Depois**:
+
+```java
+// config.properties
+senha.admin=1234
+
+// Estoque.java
+    static final String ARQUIVO_CONFIGURACAO = "config.properties";
+    static final String CHAVE_SENHA_ADMIN = "senha.admin";
+
+    static String carregarSenhaAdmin() {
+        Properties propriedades = new Properties();
+
+        try (FileInputStream arquivo = new FileInputStream(ARQUIVO_CONFIGURACAO)) {
+            propriedades.load(arquivo);
+            return propriedades.getProperty(CHAVE_SENHA_ADMIN);
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar arquivo de configuracao");
+            return null;
+        }
+    }
+    
+    // Dentro da main()
+    else if (op.equals("5")) {
+        System.out.print("Senha: ");
+        String s = sc.next();
+        if (s.equals(carregarSenhaAdmin())) {
+            System.out.println("Acesso liberado");
+        } else {
+            System.out.println("Senha errada");
+        }
+    } 
+```
+
+**Explicação**: Por questões de segurança, a senha de acesso não deve ser hardcoded no código-fonte. Em vez disso, ela pode ser armazenada em um arquivo de configuração externo, como um arquivo .properties, e carregada dinamicamente pelo sistema. Isso permite que a senha seja alterada sem a necessidade de modificar o código-fonte, reduzindo o risco de exposição acidental da senha e melhorando a segurança do sistema.
+
+
+
 # 7. Conclusão
