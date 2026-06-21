@@ -100,12 +100,12 @@ public class Estoque {
             String op = sc.next();
             if (op.equals("1")) {
                 System.out.print("Nome: ");
-                String n = sc.next();
+                String nomeProduto = sc.next();
                 System.out.print("Preco: ");
-                double p = Double.parseDouble(sc.next());   // quebra se digitar texto
+                double precoProduto = Double.parseDouble(sc.next());   // quebra se digitar texto
                 System.out.print("Qtd: ");
-                int q = Integer.parseInt(sc.next());        // quebra se digitar texto
-                add(n, p, q);
+                int quantidadeProduto = Integer.parseInt(sc.next());        // quebra se digitar texto
+                cadastrarProduto(nomeProduto, precoProduto, quantidadeProduto);
             } else if (op.equals("2")) {
                 System.out.print("Nome do produto: ");
                 String n = sc.next();

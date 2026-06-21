@@ -156,37 +156,96 @@ Ordem de prioridade:
 
 **Explicação**: Removendo comentário autoexplicativo. O método por si só já indica que adiciona um produto.
 
-### Item D6
+### Item DX
 
 **Antes**:
 
 ```java
-    // funcao que adiciona produto
-    static void add(String n, double p, int q) {
-        Produto prod = new Produto();
-        prod.nome = n;
-        prod.preco = p;
-        prod.qtd = q;
-        produtos.add(prod);
-        hist.add(n);
-        System.out.println("Produto adicionado!");
-    }
 ```
 
 **Depois**:
 
 ```java
-    static void cadastrarProduto(String nomeProduto, double precoProdto, int qquantidadeProduto) {
-        Produto prod = new Produto();
-        prod.nome = nomeProduto;
-        prod.preco = precoProdto;
-        prod.qtd = qquantidadeProduto;
-        produtos.add(prod);
-        historicoProdutosCadastrados.add(nomeProduto);
-        System.out.println("Produto adicionado!");
-    }
 ```
 
-**Explicação**: Renomeando o método e seus parametros para um nome mais descritivo.
+**Explicação**:
+### Item DX
+
+**Antes**:
+
+```java
+```
+
+**Depois**:
+
+```java
+```
+
+**Explicação**:
+### Item DX
+
+**Antes**:
+
+```java
+```
+
+**Depois**:
+
+```java
+```
+
+**Explicação**:
+### Item DX
+
+**Antes**:
+
+```java
+```
+
+**Depois**:
+
+```java
+```
+
+**Explicação**:
+### Item DX
+
+**Antes**:
+
+```java
+```
+
+**Depois**:
+
+```java
+```
+
+**Explicação**:
+### Item DX
+
+**Antes**:
+
+```java
+```
+
+**Depois**:
+
+```java
+```
+
+**Explicação**:
+### Item DX
+
+**Antes**:
+
+```java
+```
+
+**Depois**:
+
+```java
+```
+
+**Explicação**:
 
 # 7. Conclusão
