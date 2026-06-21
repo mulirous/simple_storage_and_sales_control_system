@@ -69,6 +69,8 @@ Ordem de prioridade:
 - Prioridade 3: D1, D3, D5, D6, D9, D10, D11, D12, D22;
 - Prioridade 4: D13.
 
+O critério de priorização é categórico, onde as dívidas técnicas de alto impacto e baixo esforço são priorizadas para serem quitadas primeiro, seguidas pelas dívidas de alto impacto e alto esforço, depois as dívidas de baixo impacto e baixo esforço, e por último as dívidas de baixo impacto e alto esforço. Essa abordagem visa maximizar o retorno sobre o investimento ao abordar primeiro as dívidas que têm um grande impacto no sistema com um esforço relativamente baixo.
+
 # 5. Roadmap de Quitação de Dívida Técnica
 
 #### **Pagar Agora**: 
