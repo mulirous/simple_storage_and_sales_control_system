@@ -12,6 +12,13 @@ public class Estoque {
     static ArrayList<Produto> produtos = new ArrayList<>();
     static ArrayList<String> historicoProdutosCadastrados = new ArrayList<>();
 
+    static final int LIMITE_ESTOQUE_BAIXO = 5;
+    static final double VENDA_NAO_REALIZADA = -1.0;
+    static final double LIMITE_DESCONTO_VENDA = 100;
+    static final double VALOR_DESCONTO_VENDA = 0.10;
+    static final double LIMITE_DESCONTO_RELATORIO = 200;
+    static final double VALOR_DESCONTO_RELATORIO = 0.15;
+
     static class Produto {
         String nome;
         double preco;
@@ -35,14 +42,14 @@ public class Estoque {
                     produtos.get(i).qtd = produtos.get(i).qtd - quantidade;
                     double total = produtos.get(i).preco * quantidade;
                     // desconto pra compras grandes
-                    if (total > 100) {
-                        total = total - total * 0.1;
+                    if (total > LIMITE_DESCONTO_VENDA) {
+                        total = total * (1.0 - VALOR_DESCONTO_VENDA);
                     }
                     System.out.println("Venda realizada. Total: " + total);
                     return total;
                 } else {
                     System.out.println("Estoque insuficiente");
-                    return 0;
+                    return VENDA_NAO_REALIZADA;
                 }
             }
         }
@@ -53,8 +60,8 @@ public class Estoque {
     // calcula o total de uma compra (usado no relatorio)
     static double calcular_total(double preco, int quantidade) {
         double t = preco * quantidade;
-        if (t > 200) {              // limite diferente do usado em vender()
-            t = t - t * 0.15;       // desconto diferente do usado em vender()
+        if (t > LIMITE_DESCONTO_RELATORIO) {              // limite diferente do usado em vender()
+            t = t * (1 - VALOR_DESCONTO_RELATORIO);       // desconto diferente do usado em vender()
         }
         return t;
     }
@@ -70,7 +77,7 @@ public class Estoque {
     static void relatorio_estoque_baixo() {
         System.out.println("=== ESTOQUE BAIXO ===");
         for (int i = 0; i < produtos.size(); i++) {
-            if (produtos.get(i).qtd < 5) {   // estoque baixo
+            if (produtos.get(i).qtd < LIMITE_ESTOQUE_BAIXO) {   // estoque baixo
                 System.out.println(produtos.get(i).nome + " esta com estoque baixo ("
                         + produtos.get(i).qtd + ")");
             }
