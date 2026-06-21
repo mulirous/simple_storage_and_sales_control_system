@@ -10,7 +10,7 @@ public class Estoque {
     static String SENHA_ADMIN = "1234";  // senha do admin
 
     static ArrayList<Produto> produtos = new ArrayList<>();
-    static ArrayList<String> hist = new ArrayList<>();  // historico
+    static ArrayList<String> historicoProdutosCadastrados = new ArrayList<>();
 
     static class Produto {
         String nome;
@@ -25,7 +25,7 @@ public class Estoque {
         prod.preco = p;
         prod.qtd = q;
         produtos.add(prod);
-        hist.add(n);
+        historicoProdutosCadastrados.add(n);
         System.out.println("Produto adicionado!");
     }
 

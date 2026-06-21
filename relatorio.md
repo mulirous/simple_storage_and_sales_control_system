@@ -81,6 +81,7 @@ Ordem de prioridade:
 - D3: renomear a variável para um nome mais descritivo, eliminando a necessidade do comentário explicativo. É um esforço baixo, mas melhora a legibilidade do código.
 - D5: remover o comentário explicativo, já que o método é autoexplicativo, e garantir que o nome do método seja claro o suficiente para transmitir sua função. É um esforço baixo, mas melhora a documentação do sistema.
 - D6: renomear o método para um nome mais descritivo, eliminando a necessidade do comentário explicativo, e renomear os parâmetros para nomes mais descritivos. É um esforço baixo, mas melhora a legibilidade do código.
+- D17: refatorar o método vender() para chamar o calcula_total() com uma regra de desconto unificada, garantindo que a mesma lógica seja aplicada em ambos os casos. É um esforço baixo, mas melhora a consistência e confiabilidade do sistema.
 - D9: remover o comentário explicativo, já que o método é autoexplicativo, e garantir que o nome do método seja claro o suficiente para transmitir sua função. É um esforço baixo, mas melhora a documentação do sistema.
 - D10: renomear a variável para um nome mais descritivo, eliminando a necessidade do comentário explicativo. É um esforço baixo, mas melhora a legibilidade do código.
 - D11: substituir o número hardcoded para o limite de estoque baixo por uma constante ou configuração, eliminando a necessidade do comentário explicativo. É um esforço baixo, mas melhora a manutenção do sistema.
