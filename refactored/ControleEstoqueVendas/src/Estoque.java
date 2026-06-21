@@ -130,17 +130,68 @@ public class Estoque {
             if (op.equals("1")) {
                 System.out.print("Nome: ");
                 String nomeProduto = sc.next();
+
+                if (nomeProduto.isBlank()) {
+                    System.out.println("Nome invalido");
+                    continue;
+                }
+
                 System.out.print("Preco: ");
-                double precoProduto = Double.parseDouble(sc.next());   // quebra se digitar texto
-                System.out.print("Qtd: ");
-                int quantidadeProduto = Integer.parseInt(sc.next());        // quebra se digitar texto
+                double precoProduto;
+                try {
+                    precoProduto = Double.parseDouble(sc.next());
+                } catch (NumberFormatException e) {
+                    System.out.println("Preco invalido");
+                    continue;
+                }
+
+                if (precoProduto <= 0) {
+                    System.out.println("Preco deve ser maior que zero");
+                    continue;
+                }
+
+
+                System.out.print("Quantidade: ");
+                int quantidadeProduto;
+                try {
+                    quantidadeProduto = Integer.parseInt(sc.next());
+                } catch (NumberFormatException e) {
+                    System.out.println("Quantidade invalida");
+                    continue;
+                }
+
+                if (quantidadeProduto <= 0) {
+                    System.out.println("Quantidade deve ser maior que zero");
+                    continue;
+                }
+
                 cadastrarProduto(nomeProduto, precoProduto, quantidadeProduto);
             } else if (op.equals("2")) {
                 System.out.print("Nome do produto: ");
                 String nomeProduto = sc.next();
+
+                if (nomeProduto.isBlank()) {
+                    System.out.println("Nome invalido");
+                    continue;
+                }
+
                 System.out.print("Quantidade: ");
-                int quantidadeProduto = Integer.parseInt(sc.next());
+                int quantidadeProduto;
+                try {
+                    quantidadeProduto = Integer.parseInt(sc.next());
+                } catch (NumberFormatException e) {
+                    System.out.println("Quantidade invalida");
+                    continue;
+                }
+
+                if (quantidadeProduto <= 0) {
+                    System.out.println("Quantidade deve ser maior que zero");
+                    continue;
+                }
+
+
                 double resultado = vender(nomeProduto, quantidadeProduto);
+
                 if (resultado == VENDA_NAO_REALIZADA) {
                     System.out.println("Venda nao foi realizada");
                 }
@@ -150,8 +201,15 @@ public class Estoque {
                 relatorio_estoque_baixo();
             } else if (op.equals("5")) {
                 System.out.print("Senha: ");
-                String s = sc.next();
-                if (s.equals(carregarSenhaAdmin())) {
+                String senhaAdmin = sc.next();
+
+                if(senhaAdmin.isBlank()) {
+                    System.out.println("Senha invalida");
+                    continue;
+                }
+
+
+                if (senhaAdmin.equals(carregarSenhaAdmin())) {
                     System.out.println("Acesso liberado");
                 } else {
                     System.out.println("Senha errada");

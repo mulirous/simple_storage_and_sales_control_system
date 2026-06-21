@@ -395,6 +395,156 @@ senha.admin=1234
 
 **Explicação**: Por questões de segurança, a senha de acesso não deve ser hardcoded no código-fonte. Em vez disso, ela pode ser armazenada em um arquivo de configuração externo, como um arquivo .properties, e carregada dinamicamente pelo sistema. Isso permite que a senha seja alterada sem a necessidade de modificar o código-fonte, reduzindo o risco de exposição acidental da senha e melhorando a segurança do sistema.
 
+### Item D23:
 
+**Antes**:
 
+```java
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n1-Cadastrar  2-Vender  3-Listar  4-Estoque baixo  5-Admin  0-Sair");
+            System.out.print("Opcao: ");
+            String op = sc.next();
+            if (op.equals("1")) {
+                System.out.print("Nome: ");
+                String n = sc.next();
+                System.out.print("Preco: ");
+                double p = Double.parseDouble(sc.next());   // quebra se digitar texto
+                System.out.print("Qtd: ");
+                int q = Integer.parseInt(sc.next());        // quebra se digitar texto
+                add(n, p, q);
+            } else if (op.equals("2")) {
+                System.out.print("Nome do produto: ");
+                String n = sc.next();
+                System.out.print("Quantidade: ");
+                int q = Integer.parseInt(sc.next());
+                vender(n, q);
+            } else if (op.equals("3")) {
+                listar();
+            } else if (op.equals("4")) {
+                relatorio_estoque_baixo();
+            } else if (op.equals("5")) {
+                System.out.print("Senha: ");
+                String s = sc.next();
+                if (s.equals(SENHA_ADMIN)) {
+                    System.out.println("Acesso liberado");
+                } else {
+                    System.out.println("Senha errada");
+                }
+            } else if (op.equals("0")) {
+                break;
+            } else {
+                System.out.println("Opcao invalida");
+            }
+        }
+    }
+```
+
+**Depois**:
+
+```java
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n1-Cadastrar  2-Vender  3-Listar  4-Estoque baixo  5-Admin  0-Sair");
+            System.out.print("Opcao: ");
+            String op = sc.next();
+            if (op.equals("1")) {
+                System.out.print("Nome: ");
+                String nomeProduto = sc.next();
+    
+                if (nomeProduto.isBlank()) {
+                    System.out.println("Nome invalido");
+                    continue;
+                }
+    
+                System.out.print("Preco: ");
+                double precoProduto;
+                try {
+                    precoProduto = Double.parseDouble(sc.next());
+                } catch (NumberFormatException e) {
+                    System.out.println("Preco invalido");
+                    continue;
+                }
+    
+                if (precoProduto <= 0) {
+                    System.out.println("Preco deve ser maior que zero");
+                    continue;
+                }
+    
+    
+                System.out.print("Quantidade: ");
+                int quantidadeProduto;
+                try {
+                    quantidadeProduto = Integer.parseInt(sc.next());
+                } catch (NumberFormatException e) {
+                    System.out.println("Quantidade invalida");
+                    continue;
+                }
+    
+                if (quantidadeProduto <= 0) {
+                    System.out.println("Quantidade deve ser maior que zero");
+                    continue;
+                }
+    
+                cadastrarProduto(nomeProduto, precoProduto, quantidadeProduto);
+            } else if (op.equals("2")) {
+                System.out.print("Nome do produto: ");
+                String nomeProduto = sc.next();
+    
+                if (nomeProduto.isBlank()) {
+                    System.out.println("Nome invalido");
+                    continue;
+                }
+    
+                System.out.print("Quantidade: ");
+                int quantidadeProduto;
+                try {
+                    quantidadeProduto = Integer.parseInt(sc.next());
+                } catch (NumberFormatException e) {
+                    System.out.println("Quantidade invalida");
+                    continue;
+                }
+    
+                if (quantidadeProduto <= 0) {
+                    System.out.println("Quantidade deve ser maior que zero");
+                    continue;
+                }
+    
+    
+                double resultado = vender(nomeProduto, quantidadeProduto);
+    
+                if (resultado == VENDA_NAO_REALIZADA) {
+                    System.out.println("Venda nao foi realizada");
+                }
+            } else if (op.equals("3")) {
+                listar();
+            } else if (op.equals("4")) {
+                relatorio_estoque_baixo();
+            } else if (op.equals("5")) {
+                System.out.print("Senha: ");
+                String senhaAdmin = sc.next();
+    
+                if(senhaAdmin.isBlank()) {
+                    System.out.println("Senha invalida");
+                    continue;
+                }
+    
+    
+                if (senhaAdmin.equals(carregarSenhaAdmin())) {
+                    System.out.println("Acesso liberado");
+                } else {
+                    System.out.println("Senha errada");
+                }
+            } else if (op.equals("0")) {
+                break;
+            } else {
+                System.out.println("Opcao invalida");
+            }
+        }
+    }
+```
+
+**Explicação**: Adicionando validação de entrada para os dados inseridos pelo usuário, garantindo que sejam válidos e evitando falhas ou comportamentos inesperados.
 # 7. Conclusão
