@@ -547,4 +547,20 @@ senha.admin=1234
 ```
 
 **Explicação**: Adicionando validação de entrada para os dados inseridos pelo usuário, garantindo que sejam válidos e evitando falhas ou comportamentos inesperados.
+
 # 7. Conclusão
+
+A identificação, classificação e priorização de dívidas técnicas são etapas cruciais para a manutenção e evolução no 
+ciclo de vida de um software. Portanto quanto antes a identificação e a quitação das dívidas técnicas forem realizadas, 
+melhor será a saúde do código e a qualidade do software, facilitanto manutenções e a implementação de novas _features_ 
+ao longo do tempo.
+
+As maiores dificuldades são na estimativa de pontuação de esforço e impacto, que são subjetivas e dependem do contexto 
+do projeto e da experiência da equipe. Portanto, a priorização categórica por meio da tabela acaba facilitando muito a 
+tomada de decisão após as pontuações, pois fica óbvio quais dívidas devem ser quitadas primeiro e quais podem ser deixadas 
+para serem quitadas depois ou conviver conscientemente, sem a necessidade de uma análise mais profunda para cada caso.
+
+Portanto, com este conhecimento, fica claro que a gestão de dívidas técnicas é essencial para garantir a qualidade e a 
+sustentabilidade do software a longo prazo, onde as dívidas, quando identificadas, classificadas e priorizadas corretamente,
+podem ser quitadas de forma eficiente, melhorando a saúde do código e a satisfação dos usuários, balanceando com as necessidades 
+de implementações de coisas novas no sistema.
